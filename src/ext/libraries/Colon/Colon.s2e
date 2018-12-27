@@ -1,0 +1,514 @@
+{	"extensionName": "Colon",
+	"sort":0,  
+	"javascriptURL":"js/Colon.js",
+	"firmware":"1.0",
+	"extensionPort":0,
+	"blockSpecs": [
+		["h","Program","runArduino"],
+		[
+			"w",
+			"init program ( )",
+			"initProgram",
+			"0",
+			"0",
+			{
+				"setup":"aControl.init();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.init();\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"temperature calibration 50～-50 ( %n )",
+			"calibrationTemperature",
+			"0",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.calibrationTemperature({0});\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"LED( %n.level level(0-255) )",
+			"controlLED",
+			"100",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.controlLED({0});\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"RGBLED( brightness(0-255) %n , color %d.rgbled_color )",
+			"controlRGBLED",
+			"100",
+			"WHITE",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.controlRGBLED({0},{1});\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"RGBLED2( brightness(0-255) %n , RED %n , GREEN %n , BLUE %n )",
+			"controlRGBLED2",
+			"100",
+			"0",
+			"0",
+			"0",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.controlRGBLED2({0},{1},{2},{3});\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"rotate neck servo( %n degrees(30-150) )",
+			"controlNeckServo",
+			"0",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.controlNeckServo({0});\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"play note( %d.buzzer_note , %d.buzzer_duration )",
+			"controlBuzzer",
+			"C5",
+			"Half",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.controlBuzzer({0},{1});\r\n",
+				"loop":""
+			}
+		],
+		[
+			"r",
+			"read light sensor( )",
+			"getCDSStatus",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.getCDSStatus()",
+				"loop":""
+			}
+		],
+		[
+			"r",
+			"read temperature sensor( )",
+			"getTemperatureStatus",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.getTemperatureStatus()",
+				"loop":""
+			}
+		],
+		[
+			"r",
+			"read mic sensor( %d.mic_port )",
+			"getMICStatus",
+			"LEFT_MIC",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.getMICStatus({0})",
+				"loop":""
+			}
+		],
+		[
+			"r",
+			"read rip sensor( )",
+			"getRIPStatus",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.getRIPStatus()",
+				"loop":""
+			}
+		],
+		[
+			"b",
+			"read vibration switch stauts ( )",
+			"getVibrationSwatchStatus",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.getVibrationSwatchStatus()",
+				"loop":""
+			}
+		],
+		[
+			"b",
+			"read setting switch stauts ( %d.sw_port )",
+			"getSettingSwatchStatus",
+			"LEFT_SWITCH",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.getSettingSwatchStatus({0})",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"ledmatrix control( row %d.led_position , col %d.led_position , %d.led_digital )",
+			"controlLedmatrix",
+			"0",
+			"0",
+			"HIGH",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"if({2} == 1) {\r\naControl.controlLedmatrix({0},{1},true);\r\n}else{\r\naControl.controlLedmatrix({0},{1},false);\r\n}\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"ledmatrix control char1 ( code %d.led_code1 )",
+			"controlLedmatrixByChar1",
+			"LM_A",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.controlLedmatrixByChar({0});\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"ledmatrix control char2 ( code %d.led_code2 )",
+			"controlLedmatrixByChar2",
+			"LM_a",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.controlLedmatrixByChar({0});\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"ledmatrix control char3 ( code %d.led_code3 )",
+			"controlLedmatrixByChar3",
+			"LM_zero",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.controlLedmatrixByChar({0});\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"ledmatrix control char4 ( code %d.led_code4 )",
+			"controlLedmatrixByChar4",
+			"LM_heart",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.controlLedmatrixByChar({0});\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"ledmatrix control row data( row %d.led_position , value(0-255) %n )",
+			"controlLedmatrixByRowData",
+			"0",
+			"0",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.controlLedmatrixByRowData({0}, {1});\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"ledmatrix control col data( col %d.led_position , value(0-255) %n )",
+			"controlLedmatrixByColData",
+			"0",
+			"0",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.controlLedmatrixByColData({0}, {1});\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"ledmatrix control reset( )",
+			"controlLedmatrixClear",
+			"0",
+			"0",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.controlLedmatrixClear();\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"external power control ( %d.pstat )",
+			"controlExtPower",
+			"P_ON",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.controlExtPower({0});\r\n",
+				"loop":""
+			}
+		],
+		[
+			"r",
+			"serial string read ( )",
+			"serialStringRead",
+			"0",
+			"0",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.serialStringRead();\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"serial string write ( %s )",
+			"serialStringWrite",
+			"String",
+			"0",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.serialStringWrite({0});\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"rotate ext servo( %n degrees(0-180) )",
+			"controlExtServo",
+			"0",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.controlExtServo({0});\r\n",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"break program ( )",
+			"breakProgram",
+			"0",
+			"0",
+			{
+				"setup":"aControl.init();\r\naControl.runwait();\r\n",
+				"inc":"",
+				"def":"",
+				"work":"aControl.stopAll();\r\n",
+				"loop":""
+			}
+		]
+	],
+	"menus": {
+		
+		"rgbled_status":["RGBLED_HIGH","RGBLED_LOW"],
+		"rgbled_color":["WHITE", "RED", "GREEN", "BLUE", "YELLOW", "CYAN", "MAGENTA"],
+		
+		"sw_port":["LEFT_SWITCH","RIGHT_SWITCH"],
+		"pstat":["P_ON","P_OFF"],
+
+		"mic_port":["LEFT_MIC","RIGHT_MIC"],
+
+		"motor_port":["LEFT_MOTOR","RIGHT_MOTOR"],
+		"motor_direct":["FORWARD","REVERSE"],
+
+		"buzzer_note":["ST","C2","D2","E2","F2","G2","A2","B2","C3","D3","E3","F3","G3","A3","B3","C4","D4","E4","F4","G4","A4","B4","C5","D5","E5","F5","G5","A5","B5","C6","D6","E6","F6","G6","A6","B6","C7","D7","E7","F7","G7","A7","B7","C8","D8"],
+		"buzzer_duration":["Half","Quarter","Eighth","Whole","Double","Zero"],
+
+		
+		"led_position":["0","1","2","3","4","5","6","7"],
+
+		"led_code1":["LM_A","LM_B","LM_C","LM_D","LM_E","LM_F","LM_G","LM_H","LM_I","LM_J","LM_K","LM_L",
+			"LM_M","LM_N","LM_O","LM_P","LM_Q","LM_R","LM_S","LM_T","LM_U","LM_V","LM_W","LM_X","LM_Y","LM_Z"],
+			
+		"led_code2":["LM_a","LM_i","LM_u","LM_e","LM_o","LM_ka","LM_ki","LM_ku","LM_ke","LM_ko","LM_sa",
+			"LM_shi","LM_su","LM_se","LM_so","LM_ta","LM_chi","LM_tsu","LM_te","LM_to","LM_na","LM_ni",
+			"LM_nu","LM_ne","LM_no","LM_ha","LM_hi","LM_hu","LM_he","LM_ho","LM_ma","LM_mi","LM_mu",
+			"LM_me","LM_mo","LM_ya","LM_yu","LM_yo","LM_ra","LM_ri","LM_ru","LM_re","LM_ro","LM_wa",
+			"LM_wo","LM_nn","LM_bar","LM_small tu","LM_small ya","LM_small yu","LM_small yo","LM_sonant mark",
+			"LM_p-sound consonant mark"],
+			
+		"led_code3":["LM_zero","LM_one","LM_two","LM_three","LM_four","LM_five","LM_six","LM_seven","LM_eight",
+			"LM_nine","LM_Surprise","LM_Smile","LM_plus","LM_percent","LM_at-mark","LM_Question","LM_c-degree","LM_angle"],
+			
+		"led_code4":["LM_heart","LM_note","LM_Email","LM_clock","LM_prohibit","LM_flower","LM_umbrella","LM_and","LM_sharp"],
+
+			
+		"":["",""]
+	},
+	"values":{
+		"HIGH":1,
+		"LOW":0,
+		
+		"P_ON":1,
+		"P_OFF":0,
+		
+		"RGBLED_HIGH":1,
+		"RGBLED_LOW":0,
+
+		"LEFT_SWITCH":1, 
+		"RIGHT_SWITCH":2,
+
+		"LEFT_MIC":1, 
+		"RIGHT_MIC":2,
+
+		"WHITE":1,"RED":2,"GREEN":3,"BLUE":4,"YELLOW":5,"CYAN":6,"MAGENTA":7,
+
+
+		"ST":1,
+
+		"B0":31,"C1":33,"D1":37,"E1":41,"F1":44,"G1":49,"A1":55,"B1":62,
+			"C2":65,"D2":73,"E2":82,"F2":87,"G2":98,"A2":110,"B2":123,
+			"C3":131,"D3":147,"E3":165,"F3":175,"G3":196,"A3":220,"B3":247,
+			"C4":262,"D4":294,"E4":330,"F4":349,"G4":392,"A4":440,"B4":494,
+			"C5":523,"D5":587,"E5":659,"F5":698,"G5":784,"A5":880,"B5":988,
+			"C6":1047,"D6":1175,"E6":1319,"F6":1397,"G6":1568,"A6":1760,"B6":1976,
+			"C7":2093,"D7":2349,"E7":2637,"F7":2794,"G7":3136,"A7":3520,"B7":3951,
+			"C8":4186,"D8":4699,
+		"Half":500,"Quarter":250,"Eighth":125,"Whole":1000,"Double":2000,"Zero":0,
+
+		"LEFT_LTS":2, 
+		"RIGHT_LTS":3,
+		
+		"0":0,"1":1,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,
+
+		"LM_A":0,"LM_B":1,"LM_C":2,"LM_D":3,"LM_E":4,"LM_F":5,"LM_G":6,"LM_H":7,"LM_I":8,"LM_J":9,"LM_K":10,"LM_L":11,"LM_M":12,"LM_N":13,"LM_O":14,"LM_P":15,
+		"LM_Q":16,"LM_R":17,"LM_S":18,"LM_T":19,"LM_U":20,"LM_V":21,"LM_W":22,"LM_X":23,"LM_Y":24,"LM_Z":25,"LM_a":26,"LM_i":27,"LM_u":28,"LM_e":29,"LM_o":30,
+		"LM_ka":31,"LM_ki":32,"LM_ku":33,"LM_ke":34,"LM_ko":35,"LM_sa":36,"LM_shi":37,"LM_su":38,"LM_se":39,"LM_so":40,"LM_ta":41,"LM_chi":42,"LM_tsu":43,"LM_te":44,"LM_to":45,
+		"LM_na":46,"LM_ni":47,"LM_nu":48,"LM_ne":49,"LM_no":50,"LM_ha":51,"LM_hi":52,"LM_hu":53,"LM_he":54,"LM_ho":55,"LM_ma":56,"LM_mi":57,"LM_mu":58,"LM_me":59,"LM_mo":60,
+		"LM_ya":61,"LM_yu":62,"LM_yo":63,"LM_ra":64,"LM_ri":65,"LM_ru":66,"LM_re":67,"LM_ro":68,"LM_wa":69,"LM_wo":70,"LM_nn":71,"LM_bar":72,"LM_small tu":73,"LM_small ya":74,"LM_small yu":75,
+		"LM_small yo":76,"LM_sonant mark":77,"LM_p-sound consonant mark":78,"LM_zero":79,"LM_one":80,"LM_two":81,"LM_three":82,"LM_four":83,"LM_five":84,"LM_six":85,"LM_seven":86,"LM_eight":87,"LM_nine":88,"LM_Surprise":89,"LM_Smile":90,
+		"LM_plus":91,"LM_percent":92,"LM_at-mark":93,"LM_Question":94,"LM_c-degree":95,"LM_angle":96,"LM_heart":97,"LM_note":98,"LM_Email":99,"LM_clock":100,"LM_prohibit":101,"LM_flower":102,"LM_umbrella":103,"LM_and":104,"LM_sharp":105,
+
+		"":""
+	},
+	"translators":{
+		"ja":{ // Japan version
+			"Program":"プログラム実行",
+
+			"HIGH":"オン",
+			"LOW":"オフ",
+			
+			"P_ON":"オン",
+			"P_OFF":"オフ",
+
+			"RGBLED_HIGH":"オン",
+			"RGBLED_LOW":"オフ",
+
+
+			"LEFT_SWITCH":"左",
+			"RIGHT_SWITCH":"右",
+
+			"LEFT_MIC":"左",
+			"RIGHT_MIC":"右",
+
+			"WHITE":"白色","RED":"赤色","GREEN":"緑色","BLUE":"青色","YELLOW":"黄色","CYAN":"水色","MAGENTA":"紫色",
+
+
+			"Half":"1/2",
+			"Quarter":"1/4",
+			"Eighth":"1/8",
+			"Whole":"全",
+			"Double":"倍全",
+			"Zero":"0",
+			"ST":"休符",
+			
+			"LM_A":"A","LM_B":"B","LM_C":"C","LM_D":"D","LM_E":"E","LM_F":"F","LM_G":"G","LM_H":"H","LM_I":"I","LM_J":"J","LM_K":"K",
+			"LM_L":"L","LM_M":"M","LM_N":"N","LM_O":"O","LM_P":"P","LM_Q":"Q","LM_R":"R","LM_S":"S","LM_T":"T","LM_U":"U","LM_V":"V",
+			"LM_W":"W","LM_X":"X","LM_Y":"Y","LM_Z":"Z","LM_a":"ア","LM_i":"イ","LM_u":"ウ","LM_e":"エ","LM_o":"オ","LM_ka":"カ","LM_ki":"キ","LM_ku":"ク",
+			"LM_ke":"ケ","LM_ko":"コ","LM_sa":"サ","LM_shi":"シ","LM_su":"ス","LM_se":"セ","LM_so":"ソ","LM_ta":"タ","LM_chi":"チ","LM_tsu":"ツ","LM_te":"テ","LM_to":"ト","LM_na":"ナ",
+			"LM_ni":"ニ","LM_nu":"ヌ","LM_ne":"ネ","LM_no":"ノ","LM_ha":"ハ","LM_hi":"ヒ","LM_hu":"フ","LM_he":"ヘ","LM_ho":"ホ","LM_ma":"マ","LM_mi":"ミ","LM_mu":"ム","LM_me":"メ",
+			"LM_mo":"モ","LM_ya":"ヤ","LM_yu":"ユ","LM_yo":"ヨ","LM_ra":"ラ","LM_ri":"リ","LM_ru":"ル","LM_re":"レ","LM_ro":"ロ","LM_wa":"ワ","LM_wo":"ヲ","LM_nn":"ン","LM_bar":"ー",
+			"LM_small tu":"ッ","LM_small ya":"ャ","LM_small yu":"ュ","LM_small yo":"ョ","LM_sonant mark":"゛","LM_p-sound consonant mark":"゜",
+			"LM_zero":"0","LM_one":"1","LM_two":"2","LM_three":"3","LM_four":"4","LM_five":"5","LM_six":"6","LM_seven":"7","LM_eight":"8","LM_nine":"9",
+			"LM_Surprise":"びっくり","LM_Smile":"スマイル","LM_plus":"プラス","LM_percent":"パーセント","LM_at-mark":"アットマーク","LM_Question":"ハテナ","LM_c-degree":"温度","LM_angle":"角度",
+			"LM_heart":"ハート","LM_note":"音符","LM_Email":"メール","LM_clock":"時計","LM_prohibit":"禁止マーク","LM_flower":"花","LM_umbrella":"傘","LM_and":"アンド","LM_sharp":"シャープ",
+
+			"String":"文字列",
+
+			"LED( %n.level level(0-255) )":"目LED( 輝度(0-255) %n.level )",
+			"RGBLED( brightness(0-255) %n , color %d.rgbled_color )":"頭部LED( 輝度(0-255) %n , 色 %d.rgbled_color )",
+			"RGBLED2( brightness(0-255) %n , RED %n , GREEN %n , BLUE %n )":"頭部LED( 輝度(0-255) %n , 赤 %n , 緑 %n , 青 %n )",			
+			"read vibration switch stauts ( )":"振動スイッチ読取 ( )",
+			"read setting switch stauts ( %d.sw_port )":"設定スイッチ読取 ( %d.sw_port )",
+			"read light sensor( )":"光センサ読取 ( )",
+			"rotate neck servo( %n degrees(30-150) )":"首サーボ( 角度(30-150) %n 度 )",
+			"rotate ext servo( %n degrees(0-180) )":"外部サーボ( 角度(0-180) %n 度 )",
+			"play note( %d.buzzer_note , %d.buzzer_duration )":"ブザー音( %d.buzzer_note , %d.buzzer_duration )",
+			"ledmatrix control( row %d.led_position , col %d.led_position , %d.led_digital )":"LEDマトリクス( 行 %d.led_position , 列 %d.led_position , %d.led_digital )",
+			"ledmatrix control char1 ( code %d.led_code1 )":"LEDマトリクス　文字コード1( code %d.led_code1 )",
+			"ledmatrix control char2 ( code %d.led_code2 )":"LEDマトリクス　文字コード2( code %d.led_code2 )",
+			"ledmatrix control char3 ( code %d.led_code3 )":"LEDマトリクス　文字コード3( code %d.led_code3 )",
+			"ledmatrix control char4 ( code %d.led_code4 )":"LEDマトリクス　文字コード4( code %d.led_code4 )",
+			"ledmatrix control row data( row %d.led_position , value(0-255) %n )":"LEDマトリクス　行設定( 行 %d.led_position , 8ドット（0-255） %n )",
+			"ledmatrix control col data( col %d.led_position , value(0-255) %n )":"LEDマトリクス　列設定( 列 %d.led_position , 8ドット (0-255)  %n )",
+			"ledmatrix control reset( )":"LEDマトリクス　リセット( )",
+			"serial string read ( )":"シリアル文字列読込み ( )",
+			"serial string write ( %s )":"シリアル文字列書込み ( %s )",
+			"read temperature sensor( )":"温度読取 ( )",
+			"read mic sensor( %d.mic_port )":"マイク読取 ( %d.mic_port )",
+			"read rip sensor( )":"人感センサ読取 ( )",
+			"external power control ( %d.pstat )":"外部電源操作 ( %d.pstat )",
+			"break program ( )":"Colon停止 ( )",
+			"temperature calibration 50～-50 ( %n )":"温度計補正 50～-50( %n )",
+			"init program ( )":"初期化 ( )"
+		},
+		"ja_HIRA":{ // Japan HIRAGANA version
+		}
+	}
+}

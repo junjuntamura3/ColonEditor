@@ -1,0 +1,29 @@
+{
+	"objName": "cat_robo_anger",
+	"sounds": [{
+			"soundName": "cat_robo Jump",
+			"soundID": -1,
+			"md5": "water_drop.wav",
+			"sampleCount": 18688,
+			"rate": 22050,
+			"format": ""
+		}],
+	"costumes": [{
+			"costumeName": "cat_robo_anger",
+			"baseLayerID": -1,
+			"baseLayerMD5": "cat_robo_anger.svg",
+			"rotationCenterX": 50,
+			"rotationCenterY": 50
+		}],
+	"currentCostumeIndex": 0,
+	"scratchX": 0,
+	"scratchY": 0,
+	"scale": 1,
+	"direction": 90,
+	"rotationStyle": "normal",
+	"isDraggable": false,
+	"indexInLibrary": 100000,
+	"visible": true,
+	"spriteInfo": {
+	}
+}
